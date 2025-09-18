@@ -19,7 +19,7 @@ A **Vehicles API** é um sistema completo para gerenciamento de veículos que pe
 - ✏️ **Atualizar** informações de veículos existentes
 - 🗑️ **Remover** veículos do sistema
 - 📚 **Documentação** automática com Swagger
-- 🧪 **Testes** unitários e end-to-end abrangentes
+- 🧪 **Testes** unitários abrangentes
 - 🏗️ **Clean Architecture** com separação de responsabilidades
 
 ### 🏛️ Arquitetura
@@ -222,7 +222,6 @@ pnpm test:debug
 - **26 testes unitários** ✅
 - **20 testes de controller** com cenários completos
 - **6 testes de service** com mocks apropriados
-- **Testes E2E** configurados com banco de dados de teste
 - **Isolamento completo** entre testes
 
 #### 🎯 Cenários Testados
