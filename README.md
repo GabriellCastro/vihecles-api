@@ -1,98 +1,316 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚗 Vehicles API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![NestJS](https://img.shields.io/badge/NestJS-11.0-red.svg)](https://nestjs.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-6.16-darkblue.svg)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue.svg)](https://www.postgresql.org/)
+[![Test Coverage](https://img.shields.io/badge/Coverage-55.48%25-yellow.svg)](#test-coverage)
+[![License](https://img.shields.io/badge/License-UNLICENSED-red.svg)](#)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Uma API REST robusta e moderna para gerenciamento de veículos, construída com NestJS, TypeScript e Clean Architecture.
 
-## Description
+## 📋 Sobre o Projeto
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A **Vehicles API** é um sistema completo para gerenciamento de veículos que permite:
 
-## Project setup
+- ✅ **Cadastrar** novos veículos com validação completa
+- 🔍 **Consultar** veículos (listagem e busca por ID)
+- ✏️ **Atualizar** informações de veículos existentes
+- 🗑️ **Remover** veículos do sistema
+- 📚 **Documentação** automática com Swagger
+- 🧪 **Testes** unitários e end-to-end abrangentes
+- 🏗️ **Clean Architecture** com separação de responsabilidades
 
-```bash
-$ pnpm install
+### 🏛️ Arquitetura
+
+O projeto segue os princípios da **Clean Architecture** e **SOLID**:
+
+```
+src/
+├── app/
+│   ├── app.module.ts                    # Módulo principal
+│   └── vehicle/                         # Módulo de veículos
+│       ├── controller/                  # Camada de apresentação
+│       │   ├── dto/                     # Data Transfer Objects
+│       │   └── vehicle.controller.ts    # REST Controller
+│       ├── service/                     # Camada de serviço
+│       │   └── vehicle.service.ts       # Business Service
+│       ├── usecases/                    # Casos de uso (Clean Architecture)
+│       │   ├── ports/                   # Interfaces/Contratos
+│       │   ├── create.usecase.ts
+│       │   ├── find-all.usecase.ts
+│       │   ├── find-one.usecase.ts
+│       │   ├── update.usecase.ts
+│       │   └── delete.usecase.ts
+│       ├── entities/                    # Entidades de domínio
+│       └── domain/                      # Interfaces de domínio
+├── services/
+│   └── prisma/                          # Configuração do banco
+└── main.ts                              # Bootstrap da aplicação
 ```
 
-## Compile and run the project
+## 🚀 Tecnologias
+
+### Core
+
+- **[NestJS](https://nestjs.com/)** `v11.0` - Framework Node.js para APIs escaláveis
+- **[TypeScript](https://www.typescriptlang.org/)** `v5.7` - Superset tipado do JavaScript
+- **[Prisma](https://www.prisma.io/)** `v6.16` - ORM moderno e type-safe
+- **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
+
+### Validação & Documentação
+
+- **[class-validator](https://github.com/typestack/class-validator)** - Validação declarativa
+- **[class-transformer](https://github.com/typestack/class-transformer)** - Transformação de objetos
+- **[Swagger/OpenAPI](https://swagger.io/)** - Documentação automática da API
+
+### Testes
+
+- **[Jest](https://jestjs.io/)** `v30.0` - Framework de testes
+- **[Supertest](https://github.com/visionmedia/supertest)** `v7.0` - Testes HTTP
+- **[@nestjs/testing](https://docs.nestjs.com/fundamentals/testing)** - Utilitários de teste do NestJS
+
+### Desenvolvimento
+
+- **[ESLint](https://eslint.org/)** - Linter para qualidade de código
+- **[Prettier](https://prettier.io/)** - Formatação automática
+- **[PNPM](https://pnpm.io/)** - Gerenciador de pacotes eficiente
+
+## 📦 Instalação
+
+### Pré-requisitos
+
+- **Node.js** >= 18.0.0
+- **PNPM** >= 8.0.0 (recomendado)
+- **PostgreSQL** >= 13.0
+
+### 1. Clone o repositório
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+git clone https://github.com/seu-usuario/vehicles-api.git
+cd vehicles-api
 ```
 
-## Run tests
+### 2. Instale as dependências
 
 ```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+pnpm install
 ```
 
-## Deployment
+### 3. Configure o ambiente
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Crie um arquivo `.env` na raiz do projeto:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+```env
+# Database
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/vehicles_db?schema=public"
+
+# Application
+NODE_ENV="development"
+PORT=3000
+```
+
+### 4. Configure o banco de dados
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+# Gerar cliente Prisma
+npx prisma generate
+
+# Executar migrações
+npx prisma db push
+
+# (Opcional) Popular com dados de exemplo
+npx prisma db seed
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 🏃‍♂️ Executando o Projeto
 
-## Resources
+### Desenvolvimento
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+# Modo watch (recarrega automaticamente)
+pnpm start:dev
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+# Modo normal
+pnpm start
 
-## Support
+# Modo debug
+pnpm start:debug
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Produção
 
-## Stay in touch
+```bash
+# Build do projeto
+pnpm build
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Executar em produção
+pnpm start:prod
+```
 
-## License
+A API estará disponível em: `http://localhost:3000`
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 📚 Documentação da API
+
+A documentação interativa está disponível via Swagger UI:
+
+🔗 **http://localhost:3000/api/docs**
+
+### Endpoints Disponíveis
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------||
+| `POST` | `/vehicles` | Criar novo veículo |
+| `GET` | `/vehicles` | Listar todos os veículos |
+| `GET` | `/vehicles/{id}` | Buscar veículo por ID |
+| `PATCH` | `/vehicles/{id}` | Atualizar veículo |
+| `DELETE` | `/vehicles/{id}` | Remover veículo |
+
+### Exemplo de Payload
+
+```json
+{
+  "placa": "ABC-1234",
+  "chassi": "9BWZZZ377VT123456",
+  "renavam": "12345678901",
+  "modelo": "Fusca",
+  "marca": "Volkswagen",
+  "ano": 1968
+}
+```
+
+### Validações Implementadas
+
+- **Placa**: Formato brasileiro `ABC-1234`
+- **Chassi**: Exatamente 17 caracteres
+- **Renavam**: Exatamente 11 dígitos
+- **Ano**: Entre 1886 e (ano atual + 1)
+- **Campos obrigatórios**: Todos os campos são obrigatórios na criação
+
+## 🧪 Testes
+
+### Executar Testes
+
+```bash
+# Testes unitários
+pnpm test
+
+# Testes em modo watch
+pnpm test:watch
+
+# Testes com cobertura
+pnpm test:cov
+
+# Debug de testes
+pnpm test:debug
+```
+
+### Test Coverage
+
+| Tipo de Arquivo  | Cobertura  | Funções    | Linhas     | Branches  |
+| ---------------- | ---------- | ---------- | ---------- | --------- |
+| **Controllers**  | 100%       | 100%       | 100%       | 75%       |
+| **Services**     | 100%       | 100%       | 100%       | 100%      |
+| **DTOs**         | 100%       | 100%       | 100%       | 100%      |
+| **Use Cases**    | 60%        | 50%        | 50%        | 0%        |
+| **Repositories** | 9.09%      | 0%         | 9.09%      | 0%        |
+| **Geral**        | **55.48%** | **56.66%** | **51.85%** | **40.9%** |
+
+#### 📊 Estatísticas de Testes
+
+- **26 testes unitários** ✅
+- **20 testes de controller** com cenários completos
+- **6 testes de service** com mocks apropriados
+- **Testes E2E** configurados com banco de dados de teste
+- **Isolamento completo** entre testes
+
+#### 🎯 Cenários Testados
+
+**Controllers:**
+
+- ✅ Criação de veículos (sucesso/erro)
+- ✅ Listagem completa e vazia
+- ✅ Busca por ID (encontrado/não encontrado)
+- ✅ Atualização (completa/parcial/erro)
+- ✅ Remoção (sucesso/erro)
+- ✅ Validações de entrada
+- ✅ Tratamento de erros
+
+**Services:**
+
+- ✅ Injeção de dependências
+- ✅ Chamadas corretas para use cases
+- ✅ Propagação de erros
+
+## 🛠️ Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+pnpm start:dev          # Servidor em modo desenvolvimento
+pnpm start:debug        # Servidor com debug habilitado
+
+# Build e Produção
+pnpm build              # Compilar TypeScript
+pnpm start:prod         # Executar versão compilada
+
+# Qualidade de Código
+pnpm lint               # Verificar e corrigir problemas
+pnpm format             # Formatar código com Prettier
+
+# Testes
+pnpm test               # Testes unitários
+pnpm test:cov           # Testes com cobertura
+pnpm test:watch         # Testes em modo watch
+
+# Banco de Dados
+npx prisma generate     # Gerar cliente Prisma
+npx prisma db push      # Aplicar schema ao banco
+npx prisma studio       # Interface visual do banco
+```
+
+## 🗃️ Estrutura do Banco de Dados
+
+### Tabela: `Vehicle`
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------||
+| `id` | String (UUID) | Identificador único (chave primária) |
+| `placa` | String | Placa do veículo (formato ABC-1234) |
+| `chassi` | String | Número do chassi (17 caracteres) |
+| `renavam` | String | Número do RENAVAM (11 dígitos) |
+| `modelo` | String | Modelo do veículo |
+| `marca` | String | Marca do veículo |
+| `ano` | Integer | Ano de fabricação |
+
+## 🚧 Roadmap
+
+### Próximas Funcionalidades
+
+- [ ] Autenticação e autorização (JWT)
+- [ ] Paginação nos endpoints de listagem
+- [ ] Filtros e busca avançada
+- [ ] Upload de imagens de veículos
+- [ ] Histórico de modificações (audit log)
+- [ ] Cache com Redis
+- [ ] Rate limiting
+- [ ] Métricas e monitoramento
+
+### Melhorias Técnicas
+
+- [ ] Aumentar cobertura de testes para 90%+
+- [ ] Implementar testes de integração completos
+- [ ] Docker e Docker Compose
+- [ ] CI/CD com GitHub Actions
+- [ ] Documentação de arquitetura
+- [ ] Performance benchmarks
+
+---
+
+<div align="center">
+
+**Feito com ❤️ usando NestJS e TypeScript**
+
+[⬆ Voltar ao topo](#-vehicles-api)
+
+</div>
